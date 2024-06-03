@@ -1,0 +1,260 @@
+@import url('https://fonts.googleapis.com/css2?family=Anek+Devanagari:wght@100..800&family=Inter:wght@100..900&family=M+PLUS+2:wght@100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway&family=Rubik&display=swap');
+
+* {
+    margin: 0;;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: "Poppins", sans-serif;
+  }
+
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 10px;
+    background: #37486b;
+    background: radial-gradient(#E2D1F9, #317773);
+}
+
+.wrapper {
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    width: 800px;
+}
+
+.wrapper form{
+    height: 50px;
+    width: 100%;
+    display: flex;
+    position: relative;
+    align-items: center;
+    /* justify-content: space-evenly; */
+}
+form .url-icon{
+    position: absolute;
+    width: 50px;
+    text-align: center; 
+    font-size: 23px;
+    color: #c4c4c4;
+    pointer-events: none;
+
+}
+form input:valid ~ .url-icon{
+    color: #37486b;
+}
+form input{
+    height: 100%;
+    width: 100%;
+    outline: none;
+    font-size: 20px;
+    caret-color: #fff;
+    padding: 0 120px 0 45px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    transition: all 0.1s ease
+}
+form input:valid{
+    border-color: #37486b;
+}
+form input::placeholder{
+    color: #c4c4c4;
+}
+form input:focus::placeholder{
+    color: #d9d9d9;
+}
+form button{
+    position: absolute;
+    right: 6px;
+    padding: 5px 15px;
+    border: none;
+    color: #fff;
+    font-size: 18px;
+    outline: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background: #37486b;
+    opacity: 0;
+    pointer-events: none;
+}
+
+form input:valid ~ button{
+    opacity: 1;
+    pointer-events: auto;
+}
+.wrapper a{
+    color: #000;
+}
+.wrapper .count{
+    margin: 20px 0;
+    display: flex;
+    padding-right: 5px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.count span{
+    font-size: 17px;
+
+}
+
+.count span span{
+    font-weight: 500;
+}
+
+.count a:hover{
+    color: #37486b;
+}
+
+.wrapper .urls-area{
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    max-height: 450px;
+    overflow-y: scroll;
+}
+.urls-area::-webkit-scrollbar{
+    width: 0px;
+}
+
+.urls-area :is(.title, .data){
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.urls-area li{
+    list-style: none;
+    width: 100%;
+    border-right: 1px solid #ddd;
+}
+.urls-area li:last-child{
+    border-right: 0px;
+}
+.urls-area .title li{
+    text-align: center;
+    background: #f2f2f2;
+    padding: 10px 0;
+}
+.urls-area .data li{
+   display: flex;
+   align-items: center;
+   justify-content: center;
+    padding: 8px 10px;
+    word-break: break-all;
+}
+.urls-area .data li:last-child a{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.urls-area .data li a:hover{
+    color: #37486b;
+    text-decoration: underline;
+}
+.urls-area .data li:last-child a:hover{
+   text-decoration: none;
+}
+.urls-area li:nth-child(odd){
+    background: #f2f2f2;
+}
+
+.urls-area li:nth-child(1){
+    max-width: 30%;
+}
+.urls-area li:nth-child(2){
+    max-width: 45%;
+}
+.urls-area li:nth-child(3){
+    max-width: 11%;
+}
+.urls-area li:nth-child(4){
+    max-width: 14%;
+}
+.urls-area li:nth-child(5){
+    max-width: 20%;
+}
+.blur-effect{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    backdrop-filter: blur(2px);
+    background: rgba(0,0,0,0.01);
+    display: none;
+}
+.popup-box{
+    position: absolute;
+    background: #fff;
+    padding: 20px;
+    max-width: 500px;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    border-radius: 5px;
+    box-shadow : 0px 5px 10px rgba(0,0,0,0.1);
+    transform: translate(-50%, -50%) scale(0.9);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+.popup-box.show{
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.popup-box .info-box{
+    color: #37486b;
+    background: #bef4f1;
+    border: 1px solid #7de8e3;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 17px;
+    text-align: center;
+}
+
+.info-box.error{
+    color: #721c24;
+    background: #f8d7da;
+    border-color: #f5c6cb;
+}
+
+.popup-box form{
+    margin-top: 10px;
+}
+
+.popup-box form label{
+    font-size: 18px;
+}
+.popup-box form .copy-icon{
+    position: absolute;
+    right: 10px;
+    z-index: 1;
+    top: 50%;
+    transform: translateY(-85%);
+    font-size: 20px;
+    cursor: pointer;
+}
+form .copy-icon:hover{
+    color: #317773;
+}
+.popup-box form input{
+    height: 45px;
+    border: 1px solid #ccc;
+    padding: 0;
+    margin-top: 3px;
+}
+.popup-box form button{
+    position: relative;
+    right: 0px;
+    font-size: 20px;
+    margin-top: 10px;
+    width: 100%;
+}
